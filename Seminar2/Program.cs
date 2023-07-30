@@ -36,7 +36,7 @@ bool IsDivisible (int num, int div1, int div2);
 } 
 //можно еще записать как return num % div1 == 0 && num % div2 ==0 без if и else//
 Console.Write("Input a number for checking: ");
-int number = Convert.ToInt32 (Console.ReadLine());
+int number = C
 Console.Write("Input a first divider: ");
 int divider1 = Convert.ToInt32 (Console.ReadLine());
 Console.Write("Input a second divider: ");
