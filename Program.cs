@@ -1,69 +1,68 @@
-﻿//Task #1
-/*
-int QuarterFinder(int x, int y) {
-    if (x == 0 || y == 0 ) {
-        Console.WriteLine("It's not possible to set zero coordinates");
-    }
-    if (x > 0 && y > 0) {
-        return 1;
-    } else if (x < 0 && y > 0) {
-        return 2;
-    } else if (x < 0 && y < 0) {
-        return 3;
-    } else {
-        return 4;
-    }
-}
-
-int x;
-int y;
-
-Console.Write("Please enter coordinate x: ");
-x = Convert.ToInt32(Console.ReadLine());
-Console.Write("Please enter coordinate y: ");
-y = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("The quarter is " + quarterFinder(x, y));
-*/
-
-//Task #2
-/*
-void PowerPrinter(int n) {
-    for(int i = 1; i <= n; ++i) {
-       Console.WriteLine(i + " - " + Math.Pow(i, 2));
-    }
-}
-
-int n;
-
-Console.Write("Please enter a number to powering: ");
-n = Convert.ToInt32(Console.ReadLine());
-
-PowerPrinter(n);
-*/
-
-//Task 3
-/*
-double DecartDistanceFinder(double x1, double y1, double x2, double y2) 
+﻿/*Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+int DegreeNumbers(int numberA, int numberB)
 {
-    return Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
+  int result = 1;
+  for(int i=1; i <= numberB; i++)
+  {
+    result = result * numberA;
+  }
+    return result;
 }
 
-double x1;
-double y1;
-double x2;
-double y2;
+  Console.Write("Введите число A: ");
+  int numberA = Convert.ToInt32(Console.ReadLine());
+  Console.Write("Введите степень числа - число В: ");
+  int numberB = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Please enter x1: ");
-x1 = Convert.ToDouble(Console.ReadLine());
-Console.Write("Please enter y1: ");
-y1 = Convert.ToDouble(Console.ReadLine());
-Console.Write("Please enter x2: ");
-x2 = Convert.ToDouble(Console.ReadLine());
-Console.Write("Please enter y2: ");
-y2 = Convert.ToDouble(Console.ReadLine());
+  int degreenumbers = DegreeNumbers(numberA, numberB);
+  Console.WriteLine($"Число A в натуральной степени B = " + degreenumbers);
+*/
 
+/*Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+int SumNumber (int num)
+   {
+    int counter = Convert.ToString(num).Length;
+    int advance = 0;
+    int result = 0;
+    for (int i = 0; i < counter; i++)
+    {advance = num - num % 10;
+    result = result + (num - advance);
+    num = num / 10;}
+    return result;
+}
 
-Console.WriteLine("The distance between points is {0:f2}", DecartDistanceFinder(x1, y1, x2, y2));
+int randNumber = new Random().Next(1, 10000);
+int newNumber = SumNumber(randNumber);
+Console.WriteLine($"Сумма цифр в {randNumber} - {newNumber}");
+*/
 
+// Задача 29: Напишите программу, которая задаёт массив из m элементов и выводит их на экран.
+
+/*
+        int[] CreateArray(int size, int minValue, int maxValue, int eleme)
+        {
+            int[] array = new int[size];
+      
+            for (int i = 0; i < size; i++)
+            
+            array[i] = Convert.ToInt32(Console.ReadLine()); 
+            return array;
+        }
+        void WriteArray(int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+                Console.Write(array[i] + " ");
+            Console.WriteLine();
+        }
+        Console.Write("Введите длину массива: ");
+        int lenght = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Введите минимальный элемент массива: ");
+        int min = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Введите максимальный элемент массива: ");
+        int max = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Введите 1-й элемент массива: "); 
+        int eleme = Convert.ToInt32(Console.ReadLine());
+        int[] myArray = CreateArray(lenght, min, max, eleme);
+        WriteArray(myArray);
+    
 */
