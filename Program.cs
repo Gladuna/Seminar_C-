@@ -1,183 +1,114 @@
-﻿/* Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
-double[,] create_random_2d_array()
-{
-    Console.Write("Input a quantity rows: ");
-    int rows = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Input a quantity columns: ");
-    int columns = Convert.ToInt32(Console.ReadLine());
-   
-    double [,] array = new double[rows, columns];
+﻿// Рекурсия//
 
-    for (int i = 0; i < rows; i++)
+/* Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
+using System;
+class Program
+{
+    static void Main(string[] args)
     {
-        for (int j = 0; j < columns; j++)
+        Console.Write("Введите значение N: ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n <= 0)
         {
-            array[i, j] = Convert.ToDouble(new Random().Next(-100, 100)) / 10;;
+            Console.WriteLine("N должно быть натуральным числом.");
+            return;
         }
-    }
-        return array;
-}
 
-void show_2d_array (double[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
+        Console.WriteLine("Натуральные числа от N до 1:");
+
+        // Вызываем рекурсивную функцию
+        PrintNaturalNumbers(n);
+
+        Console.ReadLine();
+    }
+
+    static void PrintNaturalNumbers(int n)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            Console.Write(array[i, j] + " ");
-        }    
-        Console.WriteLine();
+        // Базовый случай: если n стало равным 0, завершаем рекурсию
+        if (n == 0)
+            return;
+
+        // Выводим текущее значение n и вызываем функцию для n-1
+        Console.WriteLine(n);
+
+        // Рекурсивный вызов для числа n-1
+        PrintNaturalNumbers(n - 1);
     }
-
 }
-
-double [,] myArray = create_random_2d_array();
-show_2d_array(myArray);
-System.Console.WriteLine();
 */
 
-/*Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и 
-// возвращает значение этого элемента или же указание, что такого элемента нет.
+/*Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
+using System;
 
-int[,] create_random_2d_array()
+class Program
 {
-    Console.Write("Input a quantity columns: ");
-    int columns= Convert.ToInt32(Console.ReadLine());
-    Console.Write("Input a quantity rows: ");
-    int  rows = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Input a min possible value: ");
-    int min = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Input a max possible value: ");
-    int max = Convert.ToInt32(Console.ReadLine());
-
-    int [,] array = new int[rows, columns];
-
-    for (int i = 0; i < rows; i++)
+    static void Main(string[] args)
     {
-        for (int j = 0; j < columns; j++)
+        Console.WriteLine("Введите два неотрицательных целых числа m и n:");
+        Console.Write("m: ");
+        int m = int.Parse(Console.ReadLine());
+        Console.Write("n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int result = AckermannFunction(m, n);
+        Console.WriteLine($"Результат функции Аккермана для ({m}, {n}) = {result}");
+
+        Console.ReadLine();
+    }
+
+    static int AckermannFunction(int m, int n)
+    {
+        if (m == 0)
+            return n + 1;
+        else if (n == 0)
+            return AckermannFunction(m - 1, 1);
+        else
+            return AckermannFunction(m - 1, AckermannFunction(m, n - 1));
+    }
+}
+*/
+
+/* Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Введите значение M: ");
+        int m = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите значение N: ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (m <= 0 || n <= 0)
         {
-            array[i, j] = new Random().Next(min, max + 1);
+            Console.WriteLine("M и N должны быть натуральными числами.");
         }
-    }
-        return array;
-}
-void show_2d_array (int[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
+        else if (m > n)
         {
-            Console.Write(array[i, j] + " ");
-        }    
-        Console.WriteLine();
-    }
-
-}
-
-void printarray (int[,] array)
-{
-    Console.Write("Введите номер строки: ");
-        int row = int.Parse(Console.ReadLine());
-
-        Console.Write("Введите номер столбца: ");
-        int col = int.Parse(Console.ReadLine());
-
-        int numRows = array.GetLength(0);
-        int numCols = array.GetLength(1);
-
-        if (row >= 0 && row < numRows && col >= 0 && col < numCols)
-        {
-            int element = array[row, col];
-            Console.WriteLine($"Значение элемента в позиции ({row}, {col}): {element}");
+            Console.WriteLine("M должно быть меньше или равно N.");
         }
         else
         {
-            Console.WriteLine("Указанные позиции не существуют в массиве.");
+            int sum = SumNaturalNumbers(m, n);
+            Console.WriteLine($"Сумма натуральных чисел от {m} до {n} = {sum}");
         }
+
+        Console.ReadLine();
     }
 
-int [,] myArray = create_random_2d_array();
-show_2d_array(myArray);
-printarray(myArray);
-*/
-
-
-/* Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
-int[,] create_random_2d_array()
-{
-    Console.Write("Input a quantity columns: ");
-    int columns= Convert.ToInt32(Console.ReadLine());
-    Console.Write("Input a quantity rows: ");
-    int  rows = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Input a min possible value: ");
-    int min = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Input a max possible value: ");
-    int max = Convert.ToInt32(Console.ReadLine());
-
-    int [,] array = new int[rows, columns];
-
-    for (int i = 0; i < rows; i++)
+    static int SumNaturalNumbers(int m, int n)
     {
-        for (int j = 0; j < columns; j++)
-        {
-            array[i, j] = new Random().Next(min, max + 1);
-        }
+        if (m == n)
+            return m;
+        else
+            return m + SumNaturalNumbers(m + 1, n);
     }
-        return array;
 }
-void show_2d_array (int[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            Console.Write(array[i, j] + " ");
-        }    
-        Console.WriteLine();
-    }
 
-}
-void arithmeticMean (int[,] array)
-
-{int numRows = array.GetLength(0);
-int numCols = array.GetLength(1);
-double [] columnAverages = new double[numCols];
-
-for (int col = 0; col < numCols; col++)
-        {
-            double columnSum = 0;
-
-            for (int row = 0; row < numRows; row++)
-            {
-                columnSum += array[row, col];
-            }
-
-            columnAverages[col] = columnSum / numRows;
-        }
-
-        // Вывод средних арифметических для каждого столбца
-        Console.WriteLine("Средние арифметические для каждого столбца:");
-        for (int col = 0; col < numCols; col++)
-        {
-            Console.WriteLine($"Столбец {col + 1}: {columnAverages[col]}");
-        }
-    }
-
-int [,] myArray = create_random_2d_array();
-show_2d_array(myArray);
-arithmeticMean (myArray);
 */
-
-
-
-
-
-
-
-
-
-
-
 
 
 
